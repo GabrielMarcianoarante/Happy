@@ -46,12 +46,17 @@ body::before{
 /* ─── AURORA BG ─── */
 #aurora{position:fixed;inset:0;z-index:0;pointer-events:none}
 
-/* ─── PETALS ─── */
+/* ─── FALLING TULIPS ─── */
 #petals{
   position:fixed;inset:0;z-index:2;pointer-events:none;
   opacity:0;transition:opacity 2s ease;
 }
 #petals.on{opacity:1}
+
+/* ─── TULIP BURST (gift open) ─── */
+#tulip-burst{
+  position:fixed;inset:0;z-index:200;pointer-events:none;
+}
 
 /* ══════════════════════════════════
    GIFT SCREEN
@@ -239,6 +244,23 @@ body::before{
 .player-btn:hover{background:rgba(109,40,217,.4);border-color:var(--iris)}
 /* hidden iframe */
 #yt-frame{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
+
+/* ─── HERO TULIPS BACKGROUND ─── */
+#hero-tulips{
+  position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:0;
+}
+.ht{
+  position:absolute;
+  opacity:0;
+  animation:ht-fall var(--ht-dur,18s) ease-in-out var(--ht-del,0s) infinite;
+  will-change:transform,opacity;
+}
+@keyframes ht-fall{
+  0%{transform:translateY(-60px) rotate(var(--ht-r0,-8deg)) scale(var(--ht-s,.7));opacity:0}
+  8%{opacity:var(--ht-op,.18)}
+  88%{opacity:var(--ht-op,.18)}
+  100%{transform:translateY(110vh) rotate(var(--ht-r1,12deg)) scale(var(--ht-s,.7));opacity:0}
+}
 
 /* ─── HERO ─── */
 .hero{
@@ -666,6 +688,7 @@ footer{
 
 <canvas id="aurora"></canvas>
 <canvas id="petals"></canvas>
+<canvas id="tulip-burst"></canvas>
 
 <!-- ══ GIFT SCREEN ══ -->
 <div id="gift-screen">
@@ -818,6 +841,18 @@ footer{
 
   <!-- ── HERO ── -->
   <section class="hero">
+    <!-- Tulipas decorativas de fundo -->
+    <div id="hero-tulips">
+      <svg class="ht" style="left:4%;top:0;--ht-dur:22s;--ht-del:0s;--ht-op:.13;--ht-s:.55;--ht-r0:-12deg;--ht-r1:8deg" width="40" height="70" viewBox="0 0 40 70"><g><path d="M20 40 Q10 28 8 16 Q8 4 20 6 Q32 4 32 16 Q30 28 20 40Z" fill="#7c3aed"/><path d="M20 40 Q14 30 13 20 Q15 10 20 12" fill="#a78bfa" opacity=".5"/><rect x="18.5" y="40" width="3" height="26" rx="1.5" fill="#5b2fa0"/><path d="M20 52 Q14 48 10 44" stroke="#5b2fa0" stroke-width="2" fill="none" stroke-linecap="round"/></g></svg>
+      <svg class="ht" style="left:12%;top:0;--ht-dur:17s;--ht-del:3s;--ht-op:.1;--ht-s:.4;--ht-r0:6deg;--ht-r1:-10deg" width="40" height="70" viewBox="0 0 40 70"><g><path d="M20 40 Q10 28 8 16 Q8 4 20 6 Q32 4 32 16 Q30 28 20 40Z" fill="#6d28d9"/><path d="M20 40 Q14 30 13 20 Q15 10 20 12" fill="#c4b5fd" opacity=".45"/><rect x="18.5" y="40" width="3" height="26" rx="1.5" fill="#4c1d95"/><path d="M20 52 Q26 48 30 44" stroke="#4c1d95" stroke-width="2" fill="none" stroke-linecap="round"/></g></svg>
+      <svg class="ht" style="left:22%;top:0;--ht-dur:25s;--ht-del:7s;--ht-op:.16;--ht-s:.7;--ht-r0:-5deg;--ht-r1:14deg" width="40" height="70" viewBox="0 0 40 70"><g><path d="M20 40 Q10 28 8 16 Q8 4 20 6 Q32 4 32 16 Q30 28 20 40Z" fill="#8b5cf6"/><path d="M20 40 Q14 30 13 20 Q15 10 20 12" fill="#ddd6fe" opacity=".4"/><rect x="18.5" y="40" width="3" height="26" rx="1.5" fill="#6d28d9"/><path d="M20 52 Q14 48 10 44" stroke="#6d28d9" stroke-width="2" fill="none" stroke-linecap="round"/></g></svg>
+      <svg class="ht" style="left:35%;top:0;--ht-dur:19s;--ht-del:1.5s;--ht-op:.09;--ht-s:.45;--ht-r0:10deg;--ht-r1:-6deg" width="40" height="70" viewBox="0 0 40 70"><g><path d="M20 40 Q10 28 8 16 Q8 4 20 6 Q32 4 32 16 Q30 28 20 40Z" fill="#a78bfa"/><path d="M20 40 Q14 30 13 20 Q15 10 20 12" fill="#ede9fe" opacity=".4"/><rect x="18.5" y="40" width="3" height="26" rx="1.5" fill="#7c3aed"/></g></svg>
+      <svg class="ht" style="left:50%;top:0;--ht-dur:28s;--ht-del:5s;--ht-op:.08;--ht-s:.35;--ht-r0:-14deg;--ht-r1:9deg" width="40" height="70" viewBox="0 0 40 70"><g><path d="M20 40 Q10 28 8 16 Q8 4 20 6 Q32 4 32 16 Q30 28 20 40Z" fill="#6d28d9"/><path d="M20 40 Q14 30 13 20 Q15 10 20 12" fill="#c4b5fd" opacity=".5"/><rect x="18.5" y="40" width="3" height="26" rx="1.5" fill="#4c1d95"/><path d="M20 52 Q26 48 30 44" stroke="#4c1d95" stroke-width="2" fill="none" stroke-linecap="round"/></g></svg>
+      <svg class="ht" style="left:63%;top:0;--ht-dur:21s;--ht-del:10s;--ht-op:.15;--ht-s:.6;--ht-r0:7deg;--ht-r1:-12deg" width="40" height="70" viewBox="0 0 40 70"><g><path d="M20 40 Q10 28 8 16 Q8 4 20 6 Q32 4 32 16 Q30 28 20 40Z" fill="#7c3aed"/><path d="M20 40 Q14 30 13 20 Q15 10 20 12" fill="#a78bfa" opacity=".5"/><rect x="18.5" y="40" width="3" height="26" rx="1.5" fill="#5b2fa0"/><path d="M20 52 Q14 48 10 44" stroke="#5b2fa0" stroke-width="2" fill="none" stroke-linecap="round"/></g></svg>
+      <svg class="ht" style="left:77%;top:0;--ht-dur:24s;--ht-del:8s;--ht-op:.11;--ht-s:.5;--ht-r0:-9deg;--ht-r1:5deg" width="40" height="70" viewBox="0 0 40 70"><g><path d="M20 40 Q10 28 8 16 Q8 4 20 6 Q32 4 32 16 Q30 28 20 40Z" fill="#8b5cf6"/><path d="M20 40 Q14 30 13 20 Q15 10 20 12" fill="#ddd6fe" opacity=".4"/><rect x="18.5" y="40" width="3" height="26" rx="1.5" fill="#6d28d9"/></g></svg>
+      <svg class="ht" style="left:88%;top:0;--ht-dur:20s;--ht-del:4s;--ht-op:.14;--ht-s:.65;--ht-r0:11deg;--ht-r1:-7deg" width="40" height="70" viewBox="0 0 40 70"><g><path d="M20 40 Q10 28 8 16 Q8 4 20 6 Q32 4 32 16 Q30 28 20 40Z" fill="#a78bfa"/><path d="M20 40 Q14 30 13 20 Q15 10 20 12" fill="#ede9fe" opacity=".35"/><rect x="18.5" y="40" width="3" height="26" rx="1.5" fill="#7c3aed"/><path d="M20 52 Q26 48 30 44" stroke="#7c3aed" stroke-width="2" fill="none" stroke-linecap="round"/></g></svg>
+    </div>
+
     <div class="hero-orb ho1"></div>
     <div class="hero-orb ho2"></div>
     <div class="hero-orb ho3"></div>
@@ -962,62 +997,139 @@ function drawA(){
 }
 drawA();
 
-/* ══ PETALS ══ */
+/* ══ FALLING TULIPS (canvas) ══ */
 const pc=document.getElementById('petals'),px=pc.getContext('2d');
 let pts=[],ptOn=false;
 function resizeP(){pc.width=window.innerWidth;pc.height=window.innerHeight}
 resizeP();window.addEventListener('resize',resizeP);
-const PT_SHAPES=['·','∘','◇','✦'];
-const PT_COLS=['rgba(167,139,250,','rgba(196,181,253,','rgba(233,196,106,','rgba(221,214,254,'];
+
+// Draw a tulip on canvas at (x,y) with given size, rotation, color, alpha
+function drawTulip(ctx, x, y, sz, rot, col, alpha){
+  ctx.save();
+  ctx.globalAlpha = alpha;
+  ctx.translate(x, y);
+  ctx.rotate(rot);
+  ctx.scale(sz, sz);
+
+  // Stem
+  ctx.beginPath();
+  ctx.moveTo(0, 8);
+  ctx.lineTo(0, 28);
+  ctx.strokeStyle = '#5b2fa0';
+  ctx.lineWidth = 2.2;
+  ctx.lineCap = 'round';
+  ctx.stroke();
+
+  // Leaf
+  ctx.beginPath();
+  ctx.moveTo(0, 18);
+  ctx.quadraticCurveTo(-8, 12, -12, 8);
+  ctx.strokeStyle = '#6d28d9';
+  ctx.lineWidth = 1.6;
+  ctx.stroke();
+
+  // Petals
+  const petalCols = [col, shadeColor(col, 30), shadeColor(col, -20)];
+  // Left petal
+  ctx.beginPath();
+  ctx.moveTo(0, 8);
+  ctx.quadraticCurveTo(-12, -2, -8, -16);
+  ctx.quadraticCurveTo(-3, -8, 0, 8);
+  ctx.fillStyle = petalCols[1];
+  ctx.fill();
+  // Right petal
+  ctx.beginPath();
+  ctx.moveTo(0, 8);
+  ctx.quadraticCurveTo(12, -2, 8, -16);
+  ctx.quadraticCurveTo(3, -8, 0, 8);
+  ctx.fillStyle = petalCols[2];
+  ctx.fill();
+  // Center petal
+  ctx.beginPath();
+  ctx.moveTo(0, 8);
+  ctx.quadraticCurveTo(-5, -4, 0, -20);
+  ctx.quadraticCurveTo(5, -4, 0, 8);
+  ctx.fillStyle = petalCols[0];
+  ctx.fill();
+  // Highlight
+  ctx.beginPath();
+  ctx.moveTo(-1, 4);
+  ctx.quadraticCurveTo(-2, -6, 0, -14);
+  ctx.strokeStyle = 'rgba(255,255,255,0.22)';
+  ctx.lineWidth = 1;
+  ctx.stroke();
+
+  ctx.restore();
+}
+
+function shadeColor(hex, pct){
+  // lighten/darken a hex color
+  const num = parseInt(hex.replace('#',''), 16);
+  const r = Math.min(255, Math.max(0, (num>>16) + pct));
+  const g = Math.min(255, Math.max(0, ((num>>8)&0xff) + pct));
+  const b = Math.min(255, Math.max(0, (num&0xff) + pct));
+  return '#' + [r,g,b].map(v=>v.toString(16).padStart(2,'0')).join('');
+}
+
+const TULIP_COLS = ['#7c3aed','#8b5cf6','#6d28d9','#a78bfa','#4c1d95'];
+
 function mkPt(){
-  return{x:Math.random()*pc.width,y:-16,
-    vx:(Math.random()-.5)*1.1,vy:Math.random()*1.3+.35,
-    sz:Math.random()*12+5,shape:PT_SHAPES[Math.random()*PT_SHAPES.length|0],
-    col:PT_COLS[Math.random()*PT_COLS.length|0],
-    a:Math.random()*.45+.15,rot:Math.random()*Math.PI*2,
-    rv:(Math.random()-.5)*.035,w:Math.random()*Math.PI*2};
+  return{x:Math.random()*pc.width, y:-40,
+    vx:(Math.random()-.5)*.8, vy:Math.random()*.9+.3,
+    sz:Math.random()*.55+.3,
+    col:TULIP_COLS[Math.random()*TULIP_COLS.length|0],
+    a:Math.random()*.4+.2, rot:Math.random()*Math.PI*2,
+    rv:(Math.random()-.5)*.022, w:Math.random()*Math.PI*2};
 }
 function animP(){
   if(!ptOn)return;
   px.clearRect(0,0,pc.width,pc.height);
-  if(pts.length<30)pts.push(mkPt());
-  pts.forEach(p=>{p.w+=.018;p.x+=p.vx+Math.sin(p.w)*.45;p.y+=p.vy;p.rot+=p.rv;
-    px.save();px.translate(p.x,p.y);px.rotate(p.rot);
-    px.globalAlpha=p.a;px.fillStyle=p.col+p.a+')';
-    px.font=`${p.sz}px serif`;px.fillText(p.shape,0,0);px.restore();});
-  pts=pts.filter(p=>p.y<pc.height+20);
+  if(pts.length<22) pts.push(mkPt());
+  pts.forEach(p=>{
+    p.w+=.014; p.x+=p.vx+Math.sin(p.w)*.5; p.y+=p.vy; p.rot+=p.rv;
+    drawTulip(px, p.x, p.y, p.sz, p.rot, p.col, p.a);
+  });
+  pts=pts.filter(p=>p.y<pc.height+50);
   requestAnimationFrame(animP);
 }
 
-/* ══ CONFETTI ══ */
+/* ══ TULIP BURST (gift open) ══ */
 function burst(){
-  const cc=document.createElement('canvas');
-  cc.style.cssText='position:fixed;inset:0;z-index:200;pointer-events:none';
-  document.body.appendChild(cc);
-  cc.width=window.innerWidth;cc.height=window.innerHeight;
-  const cx=cc.getContext('2d'),ps=[];
-  const cols=['#a78bfa','#c4b5fd','#d4a853','#e9d5ff','#6d28d9','#b083f0','#f0e68c','#ddd6fe'];
-  for(let i=0;i<130;i++){
-    const a=Math.random()*Math.PI*2,sp=Math.random()*9+3;
-    ps.push({x:cc.width/2,y:cc.height/2,
-      vx:Math.cos(a)*sp*(0.4+Math.random()),
-      vy:Math.sin(a)*sp*(0.4+Math.random())-4.5,
-      w:Math.random()*10+4,h:Math.random()*5+2.5,
-      col:cols[Math.random()*cols.length|0],
-      rot:Math.random()*Math.PI*2,rv:(Math.random()-.5)*.18,a:1});
+  const bc = document.getElementById('tulip-burst');
+  bc.width = window.innerWidth;
+  bc.height = window.innerHeight;
+  const bx = bc.getContext('2d');
+  const cx = bc.width/2, cy = bc.height/2;
+  const flowers = [];
+
+  for(let i=0;i<28;i++){
+    const angle = Math.random()*Math.PI*2;
+    const speed = Math.random()*11+4;
+    flowers.push({
+      x: cx, y: cy,
+      vx: Math.cos(angle)*speed*(0.5+Math.random()),
+      vy: Math.sin(angle)*speed*(0.5+Math.random()) - 5,
+      sz: Math.random()*.85+.45,
+      col: TULIP_COLS[Math.random()*TULIP_COLS.length|0],
+      a: 1, rot: Math.random()*Math.PI*2,
+      rv: (Math.random()-.5)*.14,
+      gravity: 0.18+Math.random()*.08
+    });
   }
-  function run(){
-    cx.clearRect(0,0,cc.width,cc.height);
-    ps.forEach(p=>{p.x+=p.vx;p.y+=p.vy;p.vy+=.22;p.rot+=p.rv;
-      if(p.y>cc.height*.55)p.a-=.022;
-      cx.save();cx.translate(p.x,p.y);cx.rotate(p.rot);
-      cx.globalAlpha=Math.max(0,p.a);cx.fillStyle=p.col;
-      cx.fillRect(-p.w/2,-p.h/2,p.w,p.h);cx.restore();});
-    const alive=ps.filter(p=>p.a>0);
-    if(alive.length){ps.length=0;ps.push(...alive);requestAnimationFrame(run);}
-    else cc.remove();
+
+  function runBurst(){
+    bx.clearRect(0,0,bc.width,bc.height);
+    flowers.forEach(f=>{
+      f.x+=f.vx; f.y+=f.vy; f.vy+=f.gravity;
+      f.rot+=f.rv;
+      if(f.y > bc.height*.6) f.a -= 0.025;
+      if(f.a>0) drawTulip(bx, f.x, f.y, f.sz, f.rot, f.col, Math.max(0,f.a));
+    });
+    const alive = flowers.filter(f=>f.a>0);
+    if(alive.length){ flowers.length=0; flowers.push(...alive); requestAnimationFrame(runBurst); }
+    else { bc.style.display='none'; }
   }
-  run();
+  runBurst();
 }
 
 /* ══ SOUND ══ */
